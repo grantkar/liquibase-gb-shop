@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="before_add_column.PRODUCT_ID" author="karapetyan.grant" context="postgresql" labels="product_id">
+        <tagDatabase tag="before_add_column_product_id"/>
+    </changeSet>
+
+    <changeSet id="ordersItem_add_column.PRODUCT_ID" author="karapetyan.grant" context="postgresql" labels="product_id">
+        <addColumn tableName="ORDERSITEM">
+            <column name="PRODUCT_ID" type="BIGINT"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="ORDERSITEM" baseColumnNames="PRODUCT_ID"
+                                 constraintName="FK_ORDERSITEM_PRODUCT"
+                                 referencedTableName="PRODUCT"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>
